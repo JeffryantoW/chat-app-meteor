@@ -63,6 +63,12 @@ export const ChatPage = () => {
         setMessage('')
     }
 
+    const onEnterPressed = (event) => {
+        if (event.keyCode === 13) {
+            onSendChat();
+        }
+    }
+
     return (
         <Fragment>
             <Grid container spacing={3}>
@@ -99,11 +105,10 @@ export const ChatPage = () => {
                     <TextField
                         id="outlined-multiline-flexible"
                         label="Message"
-                        multiline
                         fullWidth
                         value={message}
                         onChange={event => setMessage(event.target.value)}
-                        maxRows={4}
+                        onKeyUp={event => onEnterPressed(event)}
                     />
                 </Grid>
                 <Grid item xs={4}>
